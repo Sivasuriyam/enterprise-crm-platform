@@ -15,7 +15,7 @@ const money=(n:number)=>new Intl.NumberFormat("en-US",{style:"currency",currency
 const initials=(s:string)=>s.split(" ").map(x=>x[0]).slice(0,2).join("");
 const chartData=[{month:"May",revenue:32,leads:18},{month:"Jun",revenue:42,leads:24},{month:"Jul",revenue:38,leads:22},{month:"Aug",revenue:56,leads:30},{month:"Sep",revenue:49,leads:28},{month:"Oct",revenue:68,leads:38},{month:"Nov",revenue:76,leads:44}];
 const stages=["Prospecting","Qualification","Proposal","Negotiation","Won","Lost"];
-const statusClass=(s:string)=>s.toLowerCase().replaceAll(" ","-");
+const statusClass=(s:string)=>s.toLowerCase().replace(/ /g, "-")
 function App(){
  const [page,setPage]=useState<Page>("Dashboard"),[sidebarOpen,setSidebarOpen]=useState(false),[search,setSearch]=useState(""),[showLead,setShowLead]=useState(false),[toast,setToast]=useState("");
  const leads=useSelector((s:RootState)=>s.crm.leads),deals=useSelector((s:RootState)=>s.crm.deals),customers=useSelector((s:RootState)=>s.crm.customers),tasks=useSelector((s:RootState)=>s.crm.tasks),activities=useSelector((s:RootState)=>s.crm.activities);
